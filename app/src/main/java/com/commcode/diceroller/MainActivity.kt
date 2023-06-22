@@ -1,6 +1,7 @@
 package com.commcode.diceroller
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun rollDice() {
         val diceRoll = dice.roll()
+        Log.wtf(TAG, "The value of dice is $diceRoll")
         val diceImage = findViewById<ImageView>(R.id.imageViewDice)
 
         val drawableRes = when (diceRoll) {
@@ -32,5 +34,9 @@ class MainActivity : AppCompatActivity() {
 
         diceImage.setImageResource(drawableRes)
         diceImage.contentDescription = diceRoll.toString()
+    }
+
+    companion object {
+        private const val TAG = "MainActivity"
     }
 }
